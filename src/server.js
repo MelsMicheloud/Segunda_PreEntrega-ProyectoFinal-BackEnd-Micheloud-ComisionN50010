@@ -7,8 +7,7 @@ import productsRouter from './routes/products.routes.js'
 import { cartsRouter } from './routes/carts.routes.js'
 import viewsRouter from './routes/views.routes.js'
 import socketProducts from './listener/socketProducts.js'
-import socketChat from './listener/socketMesagges.js'
-import connectToDB from './dao/config/configServer.js'
+import connectToDB from './dao/config/connectDB.js'
 
 const server = express ()
 const PORT = 8080
@@ -21,7 +20,7 @@ server.use(express.urlencoded({extended:true}))
 
 server.use('/api',cartsRouter)
 server.use('/api', productsRouter)
-server.use('/', viewsRouter)
+server.use('/', viewsRouter) //home
 
 server.engine('handlebars', handlebars.engine())
 server.set('views', __dirname+'/views')
@@ -42,5 +41,4 @@ const httpServer=server.listen(PORT, ()=>{
 
 const socketServer = new Server(httpServer)
 socketProducts(socketServer)
-socketChat(socketServer)
 

@@ -1,10 +1,10 @@
-import {productsModel} from "../../../models/products.model.js"
+import {productsModel} from "../../models/products.model.js"
 
 export default class ProductManager{
 
     getProducts = async () => {
         try {
-            return await productsModel.find().lean();
+            return await productsModel.paginate({}, {limit: 3, page: 1, lean: true});
         } catch (err) {
             return err
         }
@@ -12,7 +12,7 @@ export default class ProductManager{
 
     getProductsView = async () => {
         try {
-            return await productsModel.find().lean();
+            return await productsModel.paginate({}, {limit: 3, page: 1, lean: true})
 
         } catch (err) {
             return err
