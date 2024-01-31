@@ -12,13 +12,12 @@ export default class ProductManager{
 
     getProductsView = async () => {
         try {
-            return await productsModel.paginate({}, {limit: 3, page: 1, lean: true})
-
+            return await productsModel.find().lean();
         } catch (err) {
             return err
         }
-    };
-    
+    }
+
     getProductById = async (id) => {
         try {
             return await productsModel.findById(id)

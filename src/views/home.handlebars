@@ -12,19 +12,28 @@
                 <div class="card-body">
                     <h5 class="card-title">{{this.title}}</h5>
                     <ul class="list-unstyled">
+                        <li>
+                            <i class="bi bi-image"></i> Image: <img src="{{this.thumbnail}}" alt="{{this.title}}"
+                                class="img-fluid mt-2">
+                        </li>
                         <li><i class="bi bi-file-text"></i> Description: {{this.description}}</li>
                         <li><i class="bi bi-currency-dollar"></i> Price: ${{this.price}}</li>
                         <li><i class="bi bi-grid"></i> Category: {{this.category}}</li>
                         <li><i class="bi bi-check-circle"></i> Status: {{this.status}}</li>
                         <li><i class="bi bi-box"></i> Stock: {{this.stock}}</li>
-                        <li>
-                            <i class="bi bi-image"></i> Image: <img src="{{this.thumbnail}}" alt="{{this.title}}"
-                                class="img-fluid mt-2">
-                        </li>
                     </ul>
                 </div>
             </div>
         </div>
         {{/each}}
+        <div class="">
+            {{#if hasPrevPage}}
+                <a href="products?pageQuery={{prevPage}}">Anterior</a>
+            {{/if}}
+            <label>{{page}}</label>
+            {{#if hasNextPage}}
+                <a href="/products?pageQuery={{nextPage}}">Siguiente</a>
+            {{/if}}
+        </div>
     </div>
 </div>
